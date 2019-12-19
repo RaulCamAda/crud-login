@@ -74,13 +74,13 @@ $(document).on("click", ".btnBorrar", function(){
     
 $("#formPersonas").submit(function(e){
     e.preventDefault();    
-    categoria = $.trim($("#nombre").val());
-    estado = $.trim($("#pais").val());    
+    categoria = $.trim($("#categoria").val());
+    estado = $.trim($("#estado").val());    
     $.ajax({
         url: "bd/crud.php",
         type: "POST",
         dataType: "json",
-        data: {categoria:categoria, estado:estado, idCategoria:idCategoria, opcion:opcion},
+        data: {idCategoria:idCategoria, categoria:categoria, estado:estado, opcion:opcion},
         success: function(data){  
             console.log(data);
             idCategoria = data[0].idCategoria;            
