@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    tablaCategorias = $("#tablaCategorias").DataTable({
+    tablaPersonas = $("#tablaPersonas").DataTable({
        "columnDefs":[{
         "targets": -1,
         "data":null,
@@ -27,9 +27,9 @@ $("#btnNuevo").click(function(){
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#1cc88a");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Nueva Categoria");            
+    $(".modal-title").text("Nuevo usuario");            
     $("#modalCRUD").modal("show");        
-    idCategoria=null;
+    idLogin=null;
     opcion = 1; //alta
 });    
     
@@ -38,17 +38,19 @@ var fila; //capturar la fila para editar o borrar el registro
 //botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
-    idCategoria = parseInt(fila.find('td:eq(0)').text());
-    categoria = fila.find('td:eq(1)').text();
-    estado = fila.find('td:eq(2)').text();
+    idLogin = parseInt(fila.find('td:eq(0)').text());
+    usuario = fila.find('td:eq(1)').text();
+    password = fila.find('td:eq(2)').text();
+    idPersona = fila.find('td:eq(3)').text();
     
-    $("#categoria").val(categoria);
-    $("#estado").val(estado);
+    $("#usuario").val(usuario);
+    $("#password").val(password);
+    $("#idPersona").val(idPersona);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#4e73df");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Editar Categoria");            
+    $(".modal-title").text("Editar usuario");            
     $("#modalCRUD").modal("show");  
     
 });
@@ -56,17 +58,17 @@ $(document).on("click", ".btnEditar", function(){
 //botón BORRAR
 $(document).on("click", ".btnBorrar", function(){    
     fila = $(this);
-    idCategoria = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    idLogin = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idCategoria+"?");
+    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idLogin+"?");
     if(respuesta){
         $.ajax({
-            url: "bd/crud.php",
+            url: "bd/crudu.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:opcion, idCategoria:idCategoria},
+            data: {opcion:opcion, idLogin:idLogin},
             success: function(){
-                tablaCategorias.row(fila.parents('tr')).remove().draw();
+                tablaPersonas.row(fila.parents('tr')).remove().draw();
             }
         });
     }   
@@ -74,20 +76,22 @@ $(document).on("click", ".btnBorrar", function(){
     
 $("#formPersonas").submit(function(e){
     e.preventDefault();    
-    categoria = $.trim($("#categoria").val());
-    estado = $.trim($("#estado").val());    
+    usuario = $.trim($("#usuario").val());
+    password = $.trim($("#password").val());
+    idPersona = $.trim($("#idPersona").val());
     $.ajax({
-        url: "bd/crud.php",
+        url: "bd/crudu.php",
         type: "POST",
         dataType: "json",
-        data: {idCategoria:idCategoria, categoria:categoria, estado:estado, opcion:opcion},
+        data: {idLogin:idLogin, usuario:usuario, password:password, idPersona:idPersona, opcion:opcion},
         success: function(data){  
             console.log(data);
-            idCategoria = data[0].idCategoria;            
-            categoria = data[0].categoria;
-            estado = data[0].estado;
-            if(opcion == 1){tablaCategorias.row.add([idCategoria,categoria,estado]).draw();}
-            else{tablaCategorias.row(fila).data([idCategoria,categoria,estado]).draw();}            
+            idLogin = data[0].idLogin;            
+            usuario = data[0].usuario;
+            password = data[0].password;
+            idPersona = data[0].idPersona;
+            if(opcion == 1){tablaPersonas.row.add([idLogin,usuario,password,idPersona]).draw();}
+            else{tablaPersonas.row(fila).data([idLogin,usuario,password,idPersona]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    

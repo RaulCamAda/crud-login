@@ -1,12 +1,8 @@
 <?php require_once "vistas/parte_superior.php"?>
 
-
 <!--INICIO del cont principal-->
 <div class="container">
-    <h1>Contenido principal</h1>
-    
-    
-    
+    <h1>EDICION CATEGORIAS</h1>   
  <?php
 include_once './bd/conexion.php';
 $objeto = new Conexion();
@@ -17,7 +13,6 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 
 <div class="container">
         <div class="row">
@@ -31,7 +26,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">        
-                        <table id="tablaPersonas" class="table table-striped table-bordered table-condensed" style="width:100%">
+                        <table id="tablaCategorias" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
                             <tr>
                                 <th>Id</th>
@@ -77,7 +72,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="form-group">
                 <label for="estado" class="col-form-label">Estado:</label>
-                <input type="text" class="form-control" id="estado">
+                <input type="number" class="form-control" id="estado">
                 </div>                           
             </div>
             <div class="modal-footer">
@@ -93,5 +88,4 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
     
 </div>
 <!--FIN del cont principal-->
-
 <?php require_once "vistas/parte_inferior.php"?>

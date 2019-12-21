@@ -1,12 +1,9 @@
 
-      </div>
-      <!-- End of Main Content -->
-
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Acceso Sin Limite 2019</span>
           </div>
         </div>
       </footer>
@@ -36,8 +33,7 @@
         <div class="modal-body"></div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="../bd/logout.php">Salir</a>
-            
+          <a class="btn btn-primary" href="../bd/logout.php">Salir</a>   
         </div>
       </div>
     </div>
@@ -59,7 +55,9 @@
     <!-- datatables JS -->
     <script type="text/javascript" src="vendor/datatables/datatables.min.js"></script>    
     <!-- código propio JS --> 
-    <script type="text/javascript" src="main.js"></script>  
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="mainu.js"></script>  
+    <script type="text/javascript" src="mainc.js"></script>  
     
 
     

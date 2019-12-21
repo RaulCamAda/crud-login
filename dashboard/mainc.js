@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    tablaCategorias = $("#tablaCategorias").DataTable({
+    tablaCiudades = $("#tablaCiudades").DataTable({
        "columnDefs":[{
         "targets": -1,
         "data":null,
@@ -27,9 +27,9 @@ $("#btnNuevo").click(function(){
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#1cc88a");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Nueva Categoria");            
+    $(".modal-title").text("Nueva Ciudad");            
     $("#modalCRUD").modal("show");        
-    idCategoria=null;
+    idCiudad=null;
     opcion = 1; //alta
 });    
     
@@ -38,17 +38,17 @@ var fila; //capturar la fila para editar o borrar el registro
 //botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
-    idCategoria = parseInt(fila.find('td:eq(0)').text());
-    categoria = fila.find('td:eq(1)').text();
-    estado = fila.find('td:eq(2)').text();
+    idCiudad = parseInt(fila.find('td:eq(0)').text());
+    ciudad = fila.find('td:eq(1)').text();
+    idEstado = fila.find('td:eq(2)').text();
     
-    $("#categoria").val(categoria);
-    $("#estado").val(estado);
+    $("#ciudad").val(ciudad);
+    $("#idEstado").val(idEstado);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#4e73df");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Editar Categoria");            
+    $(".modal-title").text("Editar Ciudad");            
     $("#modalCRUD").modal("show");  
     
 });
@@ -56,17 +56,17 @@ $(document).on("click", ".btnEditar", function(){
 //botón BORRAR
 $(document).on("click", ".btnBorrar", function(){    
     fila = $(this);
-    idCategoria = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    idCiudad = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idCategoria+"?");
+    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idCiudad+"?");
     if(respuesta){
         $.ajax({
-            url: "bd/crud.php",
+            url: "bd/crudc.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:opcion, idCategoria:idCategoria},
+            data: {opcion:opcion, idCiudad:idCiudad},
             success: function(){
-                tablaCategorias.row(fila.parents('tr')).remove().draw();
+                tablaCiudades.row(fila.parents('tr')).remove().draw();
             }
         });
     }   
@@ -74,20 +74,20 @@ $(document).on("click", ".btnBorrar", function(){
     
 $("#formPersonas").submit(function(e){
     e.preventDefault();    
-    categoria = $.trim($("#categoria").val());
-    estado = $.trim($("#estado").val());    
+    ciudad = $.trim($("#ciudad").val());
+    idEstado = $.trim($("#idEstado").val());    
     $.ajax({
-        url: "bd/crud.php",
+        url: "bd/crudc.php",
         type: "POST",
         dataType: "json",
-        data: {idCategoria:idCategoria, categoria:categoria, estado:estado, opcion:opcion},
+        data: {idCiudad:idCiudad, ciudad:ciudad, idEstado:idEstado, opcion:opcion},
         success: function(data){  
             console.log(data);
-            idCategoria = data[0].idCategoria;            
-            categoria = data[0].categoria;
-            estado = data[0].estado;
-            if(opcion == 1){tablaCategorias.row.add([idCategoria,categoria,estado]).draw();}
-            else{tablaCategorias.row(fila).data([idCategoria,categoria,estado]).draw();}            
+            idCiudad = data[0].idCiudad;            
+            ciudad = data[0].ciudad;
+            idEstado = data[0].idEstado;
+            if(opcion == 1){tablaCiudades.row.add([idCiudad,ciudad,idEstado]).draw();}
+            else{tablaCiudades.row(fila).data([idCiudad,ciudad,idEstado]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
