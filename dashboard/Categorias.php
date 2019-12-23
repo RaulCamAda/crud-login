@@ -30,8 +30,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                         <thead class="text-center">
                             <tr>
                                 <th>Id</th>
-                                <th>categoria</th>
-                                <th>Estado</th>                                 
+                                <th>Categoria</th>
+                                <th>Estado</th>                                  
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -83,7 +83,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>  
-      
+          
     
     
 </div>
