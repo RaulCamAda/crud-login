@@ -16,7 +16,7 @@ if($_SESSION["s_usuario"] === null){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Acceso Sin Limite</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,7 +45,7 @@ if($_SESSION["s_usuario"] === null){
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">ASL Admin</div>
       </a>
 
       <!-- Divider -->
@@ -55,7 +55,7 @@ if($_SESSION["s_usuario"] === null){
       <li class="nav-item active">
         <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
+          <span>Inicio</span>
         </a>
         <a class="nav-link" href="Usuarios.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -73,29 +73,6 @@ if($_SESSION["s_usuario"] === null){
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.php">Buttons</a>
-            <a class="collapse-item" href="cards.php">Cards</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

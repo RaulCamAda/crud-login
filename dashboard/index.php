@@ -2,7 +2,7 @@
 
 <!--INICIO del cont principal-->
 <div class="container">
-    <h1>Página de buttons</h1>
+    <h1>PAGINA DE INICIO</h1>
 </div>
 <!--FIN del cont principal-->
 
