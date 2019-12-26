@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar2'>Editar</button><button class='btn btn-danger btnBorrar2'>Borrar</button></div></div>"  
        }],
         
     "language": {
@@ -36,7 +36,7 @@ $("#btnNuevo").click(function(){
 var fila; //capturar la fila para editar o borrar el registro
     
 //botón EDITAR    
-$(document).on("click", ".btnEditar", function(){
+$(document).on("click", ".btnEditar2", function(){
     fila = $(this).closest("tr");
     idCiudad = parseInt(fila.find('td:eq(0)').text());
     ciudad = fila.find('td:eq(1)').text();
@@ -54,7 +54,7 @@ $(document).on("click", ".btnEditar", function(){
 });
 
 //botón BORRAR
-$(document).on("click", ".btnBorrar", function(){    
+$(document).on("click", ".btnBorrar2", function(){    
     fila = $(this);
     idCiudad = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
